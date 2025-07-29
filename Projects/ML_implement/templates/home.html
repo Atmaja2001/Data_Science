@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Algerian Forest Fire FWI Predictor</title>
+</head>
+<body style="font-family: Arial, sans-serif; background-color: #f5f5f5; padding: 20px;">
+
+  <h2 style="text-align: center; color: #2c3e50;">FWI Prediction Form (Algerian Forest Fire Dataset)</h2>
+
+  <form action="{{url_for('predict')}}" method="POST" style="max-width: 600px; margin: auto; background: #fff; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
+
+    <label for="Temperature" style="display:block; margin-top:10px;">Temperature (°C):</label>
+    <input type="number" step="any" name="Temperature" required style="width:100%; padding:8px;">
+
+    <label for="RH" style="display:block; margin-top:10px;">Relative Humidity (%):</label>
+    <input type="number" step="any" name="RH" required style="width:100%; padding:8px;">
+
+    <label for="Ws" style="display:block; margin-top:10px;">Wind Speed (km/h):</label>
+    <input type="number" step="any" name="Ws" required style="width:100%; padding:8px;">
+
+    <label for="Rain" style="display:block; margin-top:10px;">Rain (mm):</label>
+    <input type="number" step="any" name="Rain" required style="width:100%; padding:8px;">
+
+    <label for="FFMC" style="display:block; margin-top:10px;">FFMC Index:</label>
+    <input type="number" step="any" name="FFMC" required style="width:100%; padding:8px;">
+
+    <label for="DMC" style="display:block; margin-top:10px;">DMC Index:</label>
+    <input type="number" step="any" name="DMC" required style="width:100%; padding:8px;">
+
+    <label for="DC" style="display:block; margin-top:10px;">DC Index:</label>
+    <input type="number" step="any" name="DC" required style="width:100%; padding:8px;">
+
+    <label for="ISI" style="display:block; margin-top:10px;">ISI Index:</label>
+    <input type="number" step="any" name="ISI" required style="width:100%; padding:8px;">
+
+    <label for="Region" style="display:block; margin-top:10px;">Region (1 = Bejaia, 2 = Sidi-Bel Abbes):</label>
+    <input type="number" name="Region" min="1" max="2" required style="width:100%; padding:8px;">
+
+    <button type="submit" style="margin-top:20px; width:100%; padding:10px; background-color:#2ecc71; color:#fff; border:none; border-radius:5px; font-size:16px; cursor:pointer;">
+      Predict FWI
+    </button>
+  </form>
+
+  <!-- Prediction Card -->
+  {% if prediction %}
+  <div style="max-width: 400px; margin: 30px auto; background-color: #ffffff; padding: 20px; border-radius: 10px; box-shadow: 0 0 15px rgba(0,0,0,0.1); text-align: center;">
+    <h3 style="color: #27ae60;">Predicted FWI</h3>
+    <p style="font-size: 24px; color: #2c3e50; font-weight: bold;">{{ prediction }}</p>
+  </div>
+  {% endif %}
+
+</body>
+</html>
